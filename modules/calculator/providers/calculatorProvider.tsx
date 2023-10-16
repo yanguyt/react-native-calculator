@@ -19,8 +19,6 @@ const CalculatorProvider = ({ children }: CalculatorProviderProps) => {
       case OperationType.MULTIPLY:
         return value * valueToAdd;
       case OperationType.DIVIDE:
-        console.log(value, valueToAdd);
-        console.log(value / valueToAdd);
         return value / valueToAdd;
 
       default:
@@ -34,7 +32,6 @@ const CalculatorProvider = ({ children }: CalculatorProviderProps) => {
       for (let index = 0; index < operations.length; index++) {
         const element = operations[index];
         if (index + 1 == operations.length) {
-          console.log(element.type, result, value);
           result = typeOfOperation(element.type, result, value);
         } else if (index == 0 && element.type == OperationType.NUMBER) {
           result = parseFloat(element.value);
@@ -51,8 +48,6 @@ const CalculatorProvider = ({ children }: CalculatorProviderProps) => {
 
     return result;
   }, [operations, value]);
-
-  console.log('------', operationResult);
 
   return (
     <CalculatorContext.Provider
